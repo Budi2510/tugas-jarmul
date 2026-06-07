@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HTTPS WebRTC Video Call with Real-Time Chat and Filters</title>
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="hero-panel" id="joinPanel">
+        <p class="eyebrow">HTTPS Local Network Ready</p>
+        <h1>WebRTC Video Call with Real-Time Chat and Filters</h1>
+        <p class="subtitle">
+          Video call antar laptop dalam satu jaringan memakai HTTPS, real-time chat, filter kamera, dan tombol keluar room.
+        </p>
+
+        <div class="join-card">
+          <label>
+            Nama kamu
+            <input id="nameInput" type="text" placeholder="Contoh: Kamu" maxlength="30" />
+          </label>
+
+          <label>
+            Room ID
+            <input id="roomInput" type="text" placeholder="Contoh: 1212" maxlength="30" />
+          </label>
+
+          <button id="joinBtn" class="primary-btn">Masuk Room</button>
+          <p class="small-note">
+            Buka link HTTPS yang sama di laptop lain, lalu masukkan Room ID yang sama.
+          </p>
+        </div>
+      </section>
+
+      <section class="meeting-panel hidden" id="meetingPanel">
+        <div class="top-bar">
+          <div>
+            <p class="eyebrow">Room</p>
+            <h2 id="roomTitle">-</h2>
+          </div>
+
+          <div class="top-actions">
+            <button id="copyLinkBtn" class="secondary-btn">Copy Link Room</button>
+            <button id="logoutBtn" class="danger-btn">Logout</button>
+          </div>
+        </div>
+
+        <div class="content-grid">
+          <section class="video-section">
+            <div class="controls">
+              <button id="cameraBtn" class="control-btn">Matikan Kamera</button>
+              <button id="micBtn" class="control-btn">Mute Mic</button>
+              <button id="screenshotBtn" class="control-btn">📸 Screenshot</button><select id="cameraSelect" class="filter-select"></select><select id="filterSelect" class="filter-select">
+                <option value="normal">Normal</option>
+                <option value="cinematic">Cinematic</option>
+                <option value="warm">Warm</option>
+                <option value="cool">Cool</option>
+                <option value="grayscale">Grayscale</option>
+                <option value="sepia">Sepia</option>
+                <option value="blur">Soft Blur</option>
+                <option value="contrast">High Contrast</option>
+              </select>
+            </div>
+
+            <div class="videos" id="videos">
+              <article class="video-card local-card">
+                <video id="localVideo" autoplay playsinline muted></video>
+                <span class="video-label" id="localLabel">Kamu</span>
+              </article>
+            </div>
+          </section>
+
+          <aside class="chat-section">
+            <div class="chat-header">
+              <h3>Real-Time Chat</h3>
+              <p id="chatRoomLabel">Room: -</p>
+            </div>
+            <div id="messages" class="messages"></div>
+            <form id="chatForm" class="chat-form">
+              <input id="messageInput" type="text" placeholder="Ketik pesan..." autocomplete="off" />
+              <button type="submit">Kirim</button>
+            </form>
+          </aside>
+        </div>
+      </section>
+    </main>
+
+    <div id="toast" class="toast hidden"></div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/client.js"></script>
+  <script src="/gesture.js"></script>
+</body>
+</html>

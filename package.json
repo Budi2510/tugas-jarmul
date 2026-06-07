@@ -1,0 +1,26 @@
+{
+  "name": "webrtc-https-video-call-chat-filters",
+  "version": "1.0.0",
+  "description": "HTTPS WebRTC video call with real-time chat and camera filters for local network / multiple laptops.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js",
+    "reset-cert": "node scripts/reset-cert.js"
+  },
+  "keywords": [
+    "webrtc",
+    "https",
+    "video-call",
+    "socket.io",
+    "chat",
+    "filters"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.3",
+    "selfsigned": "^2.4.1",
+    "socket.io": "^4.7.5"
+  }
+}
