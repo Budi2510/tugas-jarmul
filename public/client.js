@@ -33,11 +33,30 @@ const peerNames = new Map();
 const pendingIceCandidates = new Map();
 const peerFilters = new Map();
 
-const rtcConfig = {
+const rtcConfig = const rtcConfig = {
   iceServers: [
-    { urls: 'stun:stun.l.google.com:19302' },
-    { urls: 'stun:stun1.l.google.com:19302' },
-  ],
+    {
+      urls: "stun:stun.l.google.com:19302"
+    },
+
+    {
+      urls: "turn:global.relay.metered.ca:80",
+      username: "USERNAME_METERED",
+      credential: "PASSWORD_METERED"
+    },
+
+    {
+      urls: "turn:global.relay.metered.ca:443",
+      username: "USERNAME_METERED",
+      credential: "PASSWORD_METERED"
+    },
+
+    {
+      urls: "turns:global.relay.metered.ca:443?transport=tcp",
+      username: "USERNAME_METERED",
+      credential: "PASSWORD_METERED"
+    }
+  ]
 };
 
 function showToast(text) {
